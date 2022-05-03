@@ -1,0 +1,229 @@
+{%- macro infobox(company_name_tel,logo,State_telugu,Class_of_Company_telugu,Industry_telugu,BSE_code,NSE_code,ISIN,CIN,Date_of_Incorporation_telugu,RoC_telugu,Key_people_telugu,Total_assets_telugu,Products_telugu,Website_telugu,Owner_telugu,Number_of_employees_telugu,Founder_telugu,Services_telugu) -%}
+
+{{'{{Infobox company'}}
+{%- if logo != 'NaN' -%}
+    | logo = {{logo}}
+{%- endif -%}
+| name = {{company_name_tel}}
+| hq_location_country = భారతదేశం
+{%- if State_telugu != 'NaN' -%}
+    | hq_location = {{State_telugu}}
+{%- endif -%}
+{%- if Class_of_Company_telugu != 'NaN' -%}
+    | type =  {{Class_of_Company_telugu}}
+{%- endif -%}
+{%- if Industry_telugu != 'NaN' -%}
+    | Industry_telugu = {{Industry_telugu}}
+{%- endif -%}
+{% if BSE_code!='NaN' and NSE_code!='NaN' %}
+    | traded_as = {{"{{BSE|"+BSE_code+"}}, {{NSE|"+NSE_code+"}}"}}
+{% elif BSE_code!='NaN' %}
+    | traded_as = {{"{{BSE|"+BSE_code+"}}"}}
+{% elif NSE_code!='NaN' %}
+    | traded_as = {{"{{NSE|"+NSE_code+"}}"}}
+{%- endif -%}
+{%- if ISIN != 'NaN' -%}
+    | ISIN = {{ISIN}}
+{%- endif -%}
+{%- if Owner_telugu != 'NaN' -%}
+    | owner = {{Owner_telugu}}
+{%- endif -%}
+{%- if Date_of_Incorporation_telugu != 'NaN' -%}
+    | founded = {{Date_of_Incorporation_telugu}} 
+{%- endif -%}
+{%- if Founder_telugu != 'NaN' -%}
+    | Founder_telugu = {{Founder_telugu}}
+{%- endif -%}
+{%- if Services_telugu != 'NaN' -%}
+    | Services_telugu = {{Services_telugu}}
+{%- endif -%}
+{%- if RoC_telugu != 'NaN' -%}
+    | hq_location_city = {{RoC_telugu}}
+{%- endif -%}
+{%- if Key_people_telugu != 'NaN' -%}
+    | key_people = {{Key_people_telugu}}
+{%- endif -%}
+{%- if Total_assets_telugu != 'NaN' -%}
+    | assets = {{Total_assets_telugu}}
+{%- endif -%}
+{%- if Products_telugu != 'NaN' -%}
+    | Products_telugu = {{Products_telugu}} 
+{%- endif -%}
+{%- if Number_of_employees_telugu != 'NaN' -%}
+    | Number_of_employees_telugu = {{Number_of_employees_telugu}}
+{%- endif -%}
+{%- if Website_telugu != 'NaN' -%}
+    | Website_telugu = {{Website_telugu}}
+{%- endif -%}
+{{'}}\n'}}
+{%- endmacro -%}
+
+
+{%- macro intro(company_name_tel,State_telugu,Ownership_telugu,RoC_telugu,Activity_telugu,Industry_telugu,Authorised_Capital_telugu,Paid_up_capital_telugu,Key_people_telugu,Company_Status_telugu,zuba_url) -%}
+    {%- if State_telugu != 'NaN' -%}
+        {%- set title_State_telugu_line1 = "'''" + company_name_tel + "'''" + " సంస్థ " + " భారతదేశంలోని " + State_telugu + " రాష్ట్రంలో స్థాపించబడిన ఒక ప్రభుత్వ రంగ సంస్థ. " -%}
+        {%- set title_State_telugu_line2 = "'''" + company_name_tel + "'''" + " సంస్థ " + " భారతదేశానికి చెందిన ఒక ప్రభుత్వ రంగ సంస్థ, ఇది  " + State_telugu + " రాష్ట్రంలో స్థాపించబడింది. " -%} 
+    {% else -%}
+        {%- set title_State_telugu_line1 =  "'''" + company_name_tel + "'''" + " సంస్థ భారతదేశంలో స్థాపించబడిన ఒక ప్రభుత్వ రంగ సంస్థ. " -%}
+    {%- endif -%}
+
+    {%- if RoC_telugu
+     != 'NaN' and Ownership_telugu != 'NaN' -%}
+        {%- set RoC_telugu_Ownership_telugu_line1 = "ఈ సంస్థ " + Ownership_telugu + "గా వర్గీకరించబడింది. ఈ సంస్థ కార్యాలయం మొదటిగా " + RoC_telugu + "లో గల రిజిస్ట్రార్ ఆఫ్ కంపెనీస్ వద్ద నమోదు చేయబడింది. " -%}
+        {%- set RoC_telugu_Ownership_telugu_line2 = "ఈ సంస్థ కార్యాలయం మొదటిగా " + RoC_telugu + "లో గల రిజిస్ట్రార్ ఆఫ్ కంపెనీస్ వద్ద నమోదు చేయబడిన " + Ownership_telugu + "గా వర్గీకరించబడింది. " -%}
+    {%- endif -%}
+ 
+    {%- if Industry_telugu != 'NaN' and Activity_telugu != 'NaN' -%}
+        {%- set Industry_telugu_Activity_telugu_line = company_name_tel + " సంస్థ  ప్రధాన కార్యకలాపాలు " + Activity_telugu + " రంగంలో కలవు," + Industry_telugu + " రంగంలో సేవలు అందిస్తుంది. " -%}
+    {% else -%}
+        {%- if Activity_telugu != 'NaN' -%}
+            {%- set Industry_telugu_Activity_telugu_line = company_name_tel + " సంస్థ ప్రధాన కార్యకలాపాలు " + Activity_telugu + " రంగంలో కలవు. " -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if Authorised_Capital_telugu != 'NaN' and Paid_up_capital_telugu != 'NaN' -%}
+        {%- set capitals_line = "ఈ సంస్థ  అధీకృత వాటా మూలధనం(ఆర్థరైజ్డ్ కాపిటల్) " + Authorised_Capital_telugu + " , దాని చెల్లించిన మూలధనం(పైడ్అప్ కాపిటల్) " + Paid_up_capital_telugu + ". " -%}
+    {%- endif -%}
+
+    {%- if Key_people_telugu != 'NaN' -%}
+        {%- set Key_people_telugu_line = company_name_tel + " సంస్థకి ప్రస్తుతం " + Key_people_telugu + " డైరెక్టర్లుగా నియమించబడ్డారు. " -%}
+    {%- endif -%}
+
+    {%- if Company_Status_telugu == 'చురుకుగా' -%}
+        {%- set Company_Status_telugu_line = company_name_tel + " సంస్థ ప్రస్తుతం చురుకుగా కార్యకలాపాలు సాగిస్తుంది. " -%}
+    {% else -%}
+        {%- if Company_Status_telugu == 'రద్దు చేయబడింది' or Company_Status_telugu == 'కొట్టివేయు' -%}
+            {%- set Company_Status_telugu_line = company_name_tel + " సంస్థ ప్రస్తుతం రద్దు చేయబడింది. " -%}
+        {% else -%}
+            {%- if Company_Status_telugu == 'సమ్మిళితమైంది' -%}
+                {%- set Company_Status_telugu_line = company_name_tel + " సంస్థ ప్రస్తుతం మరొక సంస్థతో సమ్మిళితమైంది. " -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if zuba_url != 'NaN' -%}
+        {%- set ref1 = '<ref>' + zuba_url + '</ref>' -%}
+    {%- endif -%}
+
+    {{[title_State_telugu_line1, title_State_telugu_line1] | random }}{{[RoC_telugu_Ownership_telugu_line1, RoC_telugu_Ownership_telugu_line2] | random}}{{Industry_telugu_Activity_telugu_line}}{{capitals_line}}{{Key_people_telugu_line}}{{Company_Status_telugu_line}}{{ref1}}
+{%- endmacro -%}
+
+
+{%- macro overview(company_name_tel,CIN,reg_number,Company_Category_telugu,Class_of_Company_telugu,Listing_status_telugu) -%}
+	{%- if CIN != 'NaN' -%}
+        {%- set cin_line = [
+            "భారత కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA) నుండి వచ్చిన రికార్డుల ప్రకారం " + company_name_tel + " సంస్థ కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) " + CIN + " , దాని  నమోదు సంఖ్య " + reg_number + " గా నమోదు చేయబడింది. ",
+            "భారత కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA), " + company_name_tel + "  సంస్థకి కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) " + CIN + " , దాని నమోదు సంఖ్య " + reg_number + " ని కేటాయించింది. "
+        ] | random -%}
+        {%- set ref4 = '<ref>https://www.kaggle.com/datasets/rowhitswami/all-indian-companies-registration-data-1900-2019</ref>' -%}
+    {%- endif -%}   
+ 
+    {%- if Class_of_Company_telugu != 'NaN' and Company_Category_telugu != 'NaN' and Listing_status_telugu == 'జాబితా చేయబడింది' -%}
+        {%- set category_line = company_name_tel + " " + Class_of_Company_telugu + " సంస్థగా స్టాక్ మార్కెట్ లో జాబితా చేయబడింది, ఈ " + Company_Category_telugu + ". " -%}
+    {% else -%}
+        {%- if Company_Category_telugu != 'NaN' and Listing_status_telugu == 'జాబితా చేయబడింది' -%}
+            {%- set category_line = company_name_tel + " ప్రజా సంస్థగా స్టాక్ మార్కెట్ లో జాబితా చేయబడింది, ఈ " + Company_Category_telugu + ". " -%}
+        {% else -%}
+            {%- if Class_of_Company_telugu != 'NaN' and Listing_status_telugu == 'జాబితా చేయబడింది' -%}
+                {%- set category_line = company_name_tel + " " + Class_of_Company_telugu + " సంస్థగా స్టాక్ మార్కెట్ లో జాబితా చేయబడింది. " -%}
+            {% else -%}
+                {%- if Company_Category_telugu != 'NaN' and Listing_status_telugu != 'జాబితా చేయబడింది' -%}
+                    {%- set category_line = company_name_tel + " స్టాక్ మార్కెట్ లో జాబితా చేయబడలేదు, ఈ " + Company_Category_telugu + ". " -%}
+                {%- endif -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endif -%}
+    {{ '== గుర్తింపు ==' }}
+    {{cin_line}}{{ref4}}{{category_line}}
+{%- endmacro -%}
+
+
+{%- macro historypara(company_name_tel,new_history_tel,Date_of_Incorporation_telugu,Age_of_Company_telugu,CIN,reg_number,Industry_telugu,Parent_telugu,Divisions_telugu,Owner_telugu,wiki_url) -%}
+    {%- if new_history_tel != 'NaN' -%}
+        {%- set new_history_tel_line = new_history_tel -%}
+    {%- else -%}  
+        {%- if Date_of_Incorporation_telugu != 'NaN' and State_telugu != 'NaN' and RoC_telugu
+         !='NaN' -%}
+            {%- set new_history_tel_line = company_name_tel + " సంస్థ " + Date_of_Incorporation_telugu + " వ తారీకున భారతదేశంలోని " + State_telugu + " రాష్ట్రంలోని " + RoC_telugu
+             + " ప్రాంతంలో  స్థాపించబడింది. " -%}
+        {% else -%}
+            {%- if State_telugu != 'NaN'-%}
+                {%- set new_history_tel_line = company_name_tel + " సంస్థ భారతదేశంలోని " + State_telugu + " రాష్ట్రంలో  స్థాపించబడింది. " -%}
+            {% else -%}
+                {%- set new_history_tel_line = company_name_tel + " సంస్థ భారతదేశంలో  స్థాపించబడింది. " -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endif -%}
+    {%- if Divisions_telugu != 'NaN' -%}
+        {%- set line2 = company_name_tel + " సంస్థ ఇతర విభాగాలలో " + Divisions_telugu + "అనుబంధ సంస్థలు పనిచేస్తున్నాయి. " -%} 
+    {%- endif -%}
+    {%- if Parent_telugu != 'NaN' -%}
+        {%- set line3 = company_name_tel + " సంస్థ మాతృ సంస్థగా " + Parent_telugu + " ఉంది " -%}
+    {%- endif -%}
+    {%- if Owner_telugu != 'NaN' -%}
+        {%- set line4 = ", ఈ సంస్థలో " + Owner_telugu + " వాటా కలిగి ఉంది. " -%}
+    {%- endif -%}
+    {%- if Website_telugu != 'NaN' -%}
+        {%- set ref5 = '<ref>https://' + Website_telugu + '</ref>' -%}
+    {%- endif -%}
+    {%- if wiki_url != 'NaN' -%}
+        {%- set ref2 = '<ref>' + wiki_url + '#History</ref>' -%}
+    {%- endif -%}
+    {{ '== చరిత్ర ==' }}
+    {{new_history_tel_line}}{{ref2}}{{line2}}{{line3}}{{line4}}{{ref5}}
+{%- endmacro -%}
+
+{%- macro operations(company_name_tel,operations_tel,wiki_url) -%}
+    {%- if operations_tel != 'NaN' -%}
+        {%- set operations_tel_line = operations_tel -%}
+        {%- if wiki_url != 'NaN' -%}
+            {%- set ref3 = '<ref>' + wiki_url + '#Operations</ref>' -%}
+        {%- endif -%}
+        {{ '== కార్యకలాపాల ==' }}
+        {{operations_tel_line}}{{ref3}}
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro Products_telugupara(company_name_tel,Industry_telugu,Products_telugu) -%}
+    {%- if Industry_telugu != 'NaN' and Products_telugu != 'NaN' -%}
+        {%- set Products_telugu_line = company_name_tel + " సంస్థ " + Industry_telugu + " రంగంలో  ప్రధాన ఉత్పత్తులుగా  " + Products_telugu + " ఉన్నాయి. " -%}
+        {{ '== ఉత్పత్తులు ==' }}
+        {{Products_telugu_line}}
+    {% else -%}
+        {%- if Products_telugu != 'NaN' -%}
+            {%- set Products_telugu_line = company_name_tel + " సంస్థకి ప్రధాన ఉత్పత్తులుగా  " + Products_telugu + " ఉన్నాయి. " -%}
+            {{ '== ఉత్పత్తులు ==' }}
+            {{Products_telugu_line}}
+        {%- endif -%}
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro references() -%}
+{{ '== మూలాలు ==' }}
+{{'{{మూలాలజాబితా}}' + '\n' }}
+{%- endmacro -%}
+
+{%- macro category(State_telugu) -%}
+    [[వర్గం: తెవికీ భారతీయ సంస్థలు ]]
+    [[వర్గం: తెవికీ భారత ప్రభుత్వ సంస్థలు ]]
+    {%- if State_telugu != 'NaN' -%}
+        [[వర్గం: {{State_telugu}} లోని సంస్థలు ]] 
+    {%- endif -%}
+{%- endmacro -%}
+
+
+{{- infobox(company_name_tel,logo,State_telugu,Class_of_Company_telugu,Industry_telugu,BSE_code,NSE_code,ISIN,CIN,Date_of_Incorporation_telugu,RoC_telugu,Key_people_telugu,Total_assets_telugu,Products_telugu,Website_telugu,Owner_telugu,Number_of_employees_telugu,Founder_telugu,Services_telugu) }}
+{{'\n'}}
+{{- intro(company_name_tel,State_telugu,Ownership_telugu,RoC_telugu,Activity_telugu,Industry_telugu,Authorised_Capital_telugu,Paid_up_capital_telugu,Key_people_telugu,Company_Status_telugu,zuba_url) }}
+{{'\n'}}
+{{- historypara(company_name_tel,new_history_tel,Date_of_Incorporation_telugu,Age_of_Company_telugu,CIN,reg_number,Industry_telugu,Parent_telugu,Divisions_telugu,Owner_telugu,wiki_url) }}
+{{'\n'}}
+{{- operations(company_name_tel,operations_tel,wiki_url) }}
+{{'\n'}}
+{{- overview(company_name_tel,CIN,reg_number,Company_Category_telugu,Class_of_Company_telugu,Listing_status_telugu) }}
+{{ '\n'}}
+{{- Products_telugupara(company_name_tel,Industry_telugu,Products_telugu) }}
+{{ '\n'}}
+{{- references() }}
+{{ '\n'}}
+{{- category(State_telugu) }}
