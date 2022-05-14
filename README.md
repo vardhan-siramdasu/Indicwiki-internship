@@ -35,3 +35,5 @@ We collected more than 57000+ companies data.
 
 ## Scraping
 scraping is done using selenium.
+
+## Translation
