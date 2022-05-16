@@ -1,0 +1,257 @@
+{#
+CIN,Name,names_tel,roc_telugu,status_telugu,ownership_Tel,Company_Category_Tel,Company_Sub_Category_Tel,
+Class of Company Tel,date_telugu,age_telugu,Activity_Tel,Authorised Capital,Paid up capital,dir_tel,address_tel,
+state telugu,sub_sector_telugu,sector_telugu,Listing status telugu,NIC_code,url
+#}
+
+{%- macro infobox(names_tel,state_telugu,Class_of_Company_Tel,sector_telugu,CIN,date_telugu,roc_telugu,dir_tel,NIC_code) -%}
+
+{{'{{Infobox '}}
+| bodystyle = width:25em;text-align:center;
+| abovestyle = background-color:#cfc;
+| headerstyle = background-color:#ccf;text-align:center;
+| labelstyle = background-color:#ddf; width:20%;text-align:left;
+
+| label1 = సంస్థ పేరు 
+| data1 = {{names_tel}}
+| label2 = దేశం 
+| data2 = భారతదేశం
+{%- if state_telugu!='NaN' %}
+| label3 = రాష్ట్రం
+| data3 = {{state_telugu}}
+{%- endif %}
+{%- if Class_of_Company_Tel!='NaN' %}
+| label4 = రకం
+| data4 = {{Class_of_Company_Tel}}
+{%- endif %}
+{%- if sector_telugu!='NaN' %}
+| label5 = పరిశ్రమ
+| data5 = {{sector_telugu}}
+{%- endif %}
+{%- if CIN!= 'NaN' %} 
+| label8 = కార్పొరేట్ గుర్తింపు సంఖ్య
+| data8	= {{CIN}}
+{%- endif %}
+| label9 = గుర్తింపు
+| data9 = కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA)
+{%- if date_telugu!= 'NaN' %}
+| label10 = స్థాపించబడింది
+| data10 = {{date_telugu}} 
+{%- endif %}
+
+{%- if roc_telugu!= 'NaN' %}
+| label11 = ప్రధాన కార్యాలయం
+| data11 = {{roc_telugu}}
+{%- endif %}
+{%- if dir_tel!= 'NaN' %}
+| label12 = ప్రధాన వ్యక్తులు
+| data12 = {{dir_tel+" (డైరెక్టర్‌)"}}
+{%- endif %}
+{%- if NIC_code!= 'NaN' %}
+| label13 = జాతీయ పారిశ్రామిక వర్గీకరణ కోడ్
+| data13 = {{NIC_code}}
+{%- endif %}
+
+{{'}}\n'}}
+{%- endmacro -%}
+
+{%- macro intro(Name,names_tel,Year,Authorised_Capital,Paid_up_capital,roc_telugu,state_telugu,Company_Sub_Category_Tel,sector_telugu,url) -%}
+    
+    {%- if url != 'NaN' -%}
+        {%- set ref2_line="<ref>{{Cite web|url="+url+" | title=zaubacorp|website=zaubacorp.com}}</ref> " -%}
+    {%- else -%}
+        {%- set ref2_line="<ref>{{Cite web|url="+'https://www.zaubacorp.com/'+" | title=zaubacorp|website=zaubacorp.com}}</ref> " -%}
+    {%- endif -%}
+
+    {%- if date_telugu!='NaN' %}
+        {%- set into_line=[ "'''"+names_tel +"''' ( "+ Name+" )"+ " భారతదేశంలో కంపెనీల చట్టం నిబంధనల ప్రకారం "+Year+" లో స్థాపించబడిన సంస్థ. ",
+        "'''"+names_tel +"''' ( "+ Name+" )"+ " "+Year+" లో భారతదేశంలో కంపెనీల చట్టం నిబంధనల ప్రకారం స్థాపించబడిన సంస్థ. "
+        ] | random
+        -%}
+    {{into_line}}
+    {%- else %}
+        {%- set into_line=[ "'''"+names_tel +"''' ( "+ Name+" )"+ " భారతదేశంలో కంపెనీల చట్టం నిబంధనల ప్రకారం స్థాపించబడిన సంస్థ. ",
+        ] | random
+        -%}
+    {{into_line}}
+    {%- endif %}
+    {%- if state_telugu != 'NaN' %}
+        {%- set state_line=["ఇది భారతదేశంలోని " + state_telugu+" లో నమోదు చేయబడింది. ",
+            ] | random
+        -%}
+        {{state_line}}
+    {%- endif -%}
+    {%- if roc_telugu !='NaN' %}
+        {%- set headq_line=["దీని ప్రధాన కార్యాలయం భారతదేశంలోని "+ roc_telugu+" లో ఉంది"+ref2_line+". ","భారతదేశంలోని "+roc_telugu+" లో దీని ప్రధాన కార్యాలయం ఉంది"+ref2_line+". "
+        ] | random
+        -%}
+        {{headq_line}}
+    {%- endif %}
+    {%- if Company_Sub_Category_Tel != 'NaN' %}
+        {%- set csubcat=["ఇది "+Company_Sub_Category_Tel+" గా వర్గీకరించబడింది. ","ఈ సంస్థ "+Company_Sub_Category_Tel+" గా వర్గీకరించబడింది. "
+        ] | random
+        -%}
+        {{csubcat}}
+    {%- endif %}
+    {%- if roc_telugu != 'NaN' %}
+        {%- set reg_line= ["దీని రిజిస్ట్రార్ ఆఫ్ కంపెనీస్, ROC "+roc_telugu+" లో నమోదు చేయబడింది. ","ఈ సంస్థ రిజిస్ట్రార్ ఆఫ్ కంపెనీస్, ROC "+roc_telugu+" లో నమోదు చేయబడింది. "
+        ] | random
+        -%}
+        {{reg_line}}
+    {%- endif %}
+
+    {%- if sector_telugu != 'NaN' %}
+        {%- set ssector=["ఈ సంస్థ ప్రధాన కార్యకలాపాలు "+sector_telugu+" పరిశ్రమలో కలవు. ","ఈ సంస్థకు ప్రధానంగా "+sector_telugu+" పరిశ్రమలో కార్యకలాపాలు కలవు. "
+        ] | random
+        -%}
+        {{ssector}}
+    {%- endif %}
+    {%- if Authorised_Capital != 'NaN' and Paid_up_capital!= 'NaN' %}
+        {%- set auth_line=["దీని అధీకృత వాటా మూలధనం(ఆర్థరైజ్డ్ కాపిటల్) రూ."+Authorised_Capital[:-2]+""+ref2_line+", దాని చెల్లించిన మూలధనం(పైడ్అప్ కాపిటల్) రూ."+Paid_up_capital[:-2]+". ",
+        ] |random
+        -%}
+        {{auth_line}}
+    {%- endif %}
+
+{%- endmacro -%}
+{%- macro hist(Name,names_tel,date_telugu,state_telugu,Class_of_Company_Tel,dir_tel,ownership_Tel) -%}
+    {%- set ref4_line="<ref>{{Cite web|url="+'https://cleartax.in/s/cin-corporate-identification-number'+"|title= cleartax  |website=cleartax.in}}</ref> " -%}
+    {{ '==చరిత్ర=='+'\n' }}
+    {%- if state_telugu != 'NaN' and date_telugu != 'NaN' %}
+        {%- set state_line=["'''"+names_tel+"''' "+date_telugu+ " న "+state_telugu+" లో నమోదు చేయబడింది. ",
+        ] | random
+        -%}
+        {{state_line}}
+    {%- elif state_telugu != 'NaN' and date_telugu == 'NaN' %}
+        {%- set state_line=["'''"+names_tel+"''' "+state_telugu+" లో నమోదు చేయబడింది. ",
+             ] | random
+        -%}
+        {{state_line}}
+    {%- elif state_telugu == 'NaN' and date_telugu != 'NaN' %}
+        {%- set state_line=["'''"+names_tel+"''' భారతదేశంలో " + date_telugu +" న నమోదు చేయబడింది. ",
+            ] | random
+        -%}
+        {{state_line}}
+    {%- endif %}
+    {%- if Class_of_Company_Tel!='NaN' %}
+        {%- set class_line= ["ఇది ఒక "+Class_of_Company_Tel+" లిమిటెడ్ సంస్థ. ",
+        ] | random
+        -%}
+        {{class_line}}
+    {%- endif %}
+    {%- if dir_tel != 'NaN' %}
+        {%- set dir_line = [names_tel+" సంస్థకి ప్రస్తుతం " + dir_tel + " డైరెక్టర్‌గా నియమించబడ్డారు. ",names_tel+" సంస్థకి ప్రస్తుతం " + dir_tel + " డైరెక్టర్‌గా ఉన్నారు. ",
+        ] | random
+        -%}
+        {{dir_line}}
+    {%- endif %}
+    {%- if Listing_status_telugu != 'NaN' -%}
+        {%- set li_line =[ "సంస్థ నమోదు సంఖ్య(CIN) ప్రకారము ఈ సంస్థ స్టాక్ మార్కెట్‌లో "+Listing_status_telugu+". ",
+        ] | random
+        -%}
+        {{li_line}}
+    {%- endif -%}
+    {%- if ownership_Tel!= 'NaN' -%}
+        {%- set own_line = ["ఈ సంస్థ " + ownership_Tel + "గా వర్గీకరించబడింది"+ref4_line+". ","ఈ సంస్థ " + ownership_Tel + "గా పేర్కొనబడింది"+ref4_line+". "
+        ] | random
+        -%}
+        {{own_line}}
+    {%- endif -%}
+{%- endmacro -%}
+{%- macro opt(Name,names_tel,sub_sector_telugu,sector_telugu,Activity_Tel,status_telugu,Company_Category_Tel) -%}
+    {%- set ref3_line="<ref>{{Cite web|url="+'https://vakilsearch.com/online-udyog-aadhaar-registration/the-nic-code'+"|title= vakilsearch |website=vakilsearch.com}}</ref> " -%}
+    {{ '==కార్యకలపాలు =='+'\n' }}
+    {%- if Sector_Tel != 'NaN' -%}
+        {%- set ssector=[names_tel+" సంస్థ ప్రధానంగా "+sector_telugu+" పరిశ్రమలో సేవలను అందిస్తుంది"+ref3_line+". ",
+        ] | random
+        -%}
+        {{ssector}}
+    {%- endif -%}
+    {%- if sub_sector_telugu != 'NaN' -%}
+        {%- set subsector=["ఈ సంస్థ ప్రధాన కార్యకలాపాలు "+sub_sector_telugu+" రంగంలో కలవు. ","ఈ సంస్థకు ప్రధానంగా "+sub_sector_telugu+" రంగంలో కార్యకలాపాలు కలవు. "
+        ] | random
+        -%}
+        {{subsector}}
+    {%- endif -%}
+    {%- if Activity_Tel != 'NaN' -%}
+        {%- set act_line =[ "ఈ సంస్థ కార్యకలాపాలు "+Activity_Tel+". ",
+        ] | random
+        -%}
+        {{act_line}}
+    {%- endif -%}
+    {%- if status_telugu!='NaN' and status_telugu =='క్రియాశీల' -%}
+        {%- set status_line =[ "ఈ సంస్థ ప్రస్తుతం చురుకుగా కార్యకలాపాలు సాగిస్తుంది. ","ఈ సంస్థ ప్రస్తుతం చురుకుగా కార్యకలాపాలు కొనసాగిస్తుంది. "
+        ] | random
+         -%}
+        {{status_line}}
+    {%- endif -%}
+   {%- if Company_Category_Tel != 'NaN' and Company_Category_Tel=='కంపెనీ షేర్ల ద్వారా పరిమితం చేయబడింది' -%}
+        {%- set cc_line= [ "ఇది షేర్ల ద్వారా పరిమితం చేయబడిన సంస్థ. ","ఈ సంస్థ షేర్ల ద్వారా పరిమితం చేయబడింది. "
+        ] | random
+        -%}
+        {{cc_line}}
+    {%- elif Company_Category_Tel != 'NaN' and Company_Category_Tel=='కంపెనీ గ్యారెంటీ ద్వారా లిమిటెడ్' -%}
+        {%- set cc_line= [ "ఇది గ్యారెంటీ ద్వారా పరిమితం చేయబడిన సంస్థ. ","ఈ సంస్థ గ్యారెంటీ ద్వారా పరిమితం చేయబడింది. "
+        ] | random
+        -%}
+        {{cc_line}}
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- macro other(names_tel,CIN,NIC_code,address_tel) -%}
+
+{%- set ref1_line="<ref>{{Cite web|url="+'https://legaldocs.co.in/nic-code'+" | title="+"nic_code"+"|website=legaldocs.co.in}}</ref> " -%}
+
+    {{ '==ఇతర వివరాలు=='+'\n' }}
+    {%- if CIN != 'NaN' -%}
+        {%- set cin_line = [
+            "భారత కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA) నుండి వచ్చిన రికార్డుల ప్రకారం " + names_tel + " సంస్థ కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) " + CIN + ", దాని నమోదు సంఖ్య " + CIN[16:] + " గా నమోదు చేయబడింది. ",
+            "భారత కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA), " + names_tel + "  సంస్థకి కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) " + CIN + ", నమోదు సంఖ్య " + CIN[16:]+ " ని కేటాయించింది. "
+        ] | random -%}
+        {{"*"+cin_line+"\n"}}
+    {%- endif -%}  
+    {%- if NIC_code != 'NaN' -%}
+        {%- set nic_line=["ఈ సంస్థ జాతీయ పారిశ్రామిక వర్గీకరణ(NIC) కోడ్ "+NIC_code+""+ref1_line+". ",""+NIC_code+" అనేది ఈ సంస్థ జాతీయ పారిశ్రామిక వర్గీకరణ(NIC) కోడ్"+ref1_line+". "
+        ] | random
+        -%}
+        {{"*"+nic_line+"\n"}}
+    {%- endif -%}
+    {%- if address_tel != 'NaN' -%}
+        {%- set add_line=["ఈ సంస్థ చిరునామా "+address_tel+". ",
+        ] | random
+        -%}
+        {{"*"+add_line}}
+    {%- endif -%}
+
+{%- endmacro -%}
+
+{%- macro references(url,Company_Tel) -%}
+
+{{ '==మూలాలు=='+'\n'}}<references />
+
+{%- endmacro -%}
+
+{%- macro category(state_telugu) -%}
+
+	[[వర్గం: తెవికీ భారతీయ సంస్థలు ]]
+    [[వర్గం: Stage 4 ఇతర సంస్థలు]]
+    {%- if state_telugu!= 'NaN' %}
+    [[వర్గం: {{state_telugu}} లోని సంస్థలు]]
+    {%- endif %}
+    
+{%- endmacro -%}
+
+{{- infobox(names_tel,state_telugu,Class_of_Company_Tel,sector_telugu,CIN,date_telugu,roc_telugu,dir_tel,NIC_code) }}
+{{'\n'}}
+{{- intro(Name,names_tel,Year,Authorised_Capital,Paid_up_capital,roc_telugu,state_telugu,Company_Sub_Category_Tel,sector_telugu,url) }}
+{{'\n'}}
+{{- hist(Name,names_tel,date_telugu,state_telugu,Class_of_Company_Tel,dir_tel,ownership_Tel) }}
+{{'\n'}}
+{{- opt(Name,names_tel,sub_sector_telugu,sector_telugu,Activity_Tel,status_telugu,Company_Category_Tel) }}
+{{'\n'}}
+{{- other(names_tel,CIN,NIC_code,address_tel) }}
+{{'\n'}} 
+{{- references() }}
+{{'\n'}}
+
+{{- category(state_telugu) }}
