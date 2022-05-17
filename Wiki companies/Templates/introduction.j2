@@ -1,0 +1,180 @@
+{%- macro infobox() -%}
+
+{{'{{Infobox company'}}
+| name= {{company_name}}
+{%- if logo!="-" -%}
+| logo= {{logo}}
+{%- endif -%}
+{%- if industry!= '-' %}
+| industry = {{industry}}
+{%- endif %}
+{%- if headquarters!='-' %}
+| hq_location = {{headquarters}}
+{%- endif %}
+| hq_location_country = భారతదేశం
+{%- if type!= '-' %}
+| type = {{type}}
+{%- elif class_of_company!="-"-%}
+| type={{class_of_company}}
+{%- endif %}
+{%- if founded!= '-' %}
+| founded = {{founded}}
+{%- endif %}
+{%- if key_people!= '-' %}
+| key_people = {{key_people}}
+{%- endif %}
+{%- if website!= '-' and website[0]!="-"%}
+| website ={{website[0]}}
+{%- endif %}
+{{'}}\n'}}
+{%- endmacro -%}
+
+{%- set ref1="<ref>{{Cite web|title=Company website|url="+website[0]+"|access-date=2021-06-07}}</ref>" -%}
+{%- set ref2="<ref>{{Cite web|title=Wikipedia ref|url="+website[1]+"|access-date=2021-06-07}}</ref>" -%}
+{%- set ref3="<ref>{{Cite web|title=Zaubacorp data|url="+"https://www.zaubacorp.com/"+"|access-date=2021-06-07}}</ref>" -%}
+{%- set ref4="<ref>{{Cite web|title=Ministry of Corporate Affairs|url="+"https://www.mca.gov.in/content/mca/global/en/home.html"+"|access-date=2021-06-07}}</ref>" -%}
+
+
+{%- macro intro(CIN,company_name,founded,type,headquarters,RoC,industry,sector,authorised_capital,paidup_capital,key_people,status,class_of_company,regno) -%}
+    {%- set intro_line=["'''"+company_name+"'''"+" అనే పేరుగల సంస్థ భారతదేశంలో కంపెనీల చట్టం నిబంధనల ప్రకారం "+founded+" లో స్థాపించబడింది. "+ref1,"'''"+company_name+"'''"+" అనే పేరుగల సంస్థ "+founded+" లో భారతదేశంలో కంపెనీల చట్టం నిబంధనల ప్రకారం స్థాపించబడింది. "+ref1] | random -%}
+
+    {%- set dtype="ప్రైవేట్" -%}
+    {%- if type!="-"-%}
+        {%- set type_line="ఇది ఒక "+type+" రంగానికి చెందిన సంస్థ. " -%}
+    {%- elif class_of_company!="-" -%}
+        {%- set type_line="ఇది ఒక "+class_of_company+" రంగానికి చెందిన సంస్థ. " -%}
+    {%- else -%}
+        {%- set type_line="ఇది ఒక "+dtype+" రంగానికి చెందిన సంస్థ. " -%}
+    {%- endif -%}
+
+    {%- if RoC!="-" %}
+        {%- set roc_line="ఈ సంస్థ రిజిస్ట్రార్ అఫ్ కంపెనీస్(ROC) "+RoC+" వద్ద నమోదు చేయబడింది. " -%}
+    {% endif -%}
+
+    {%- if headquarters!="-"-%}
+        {%- set headq_line=["ఈ సంస్థ ప్రధాన కార్యాలయం "+headquarters+" లో ఉంది. ",headquarters+" లో దీని ప్రధాన కార్యాలయం స్థాపించబడింది. "] | random -%}
+    {%- endif -%}
+
+    {%- if industry!="-" and industry!="పరిశ్రమలు" %}
+        {%- set industry_line=[company_name+" సంస్థ "+industry+" పరిశ్రమలో పనిచేస్తుంది. ","ఈ సంస్థ "+industry+" పరిశ్రమలో సేవలు అందిస్తుంది. "] | random -%}
+    {% endif -%}
+
+    {%- if sector!="-" -%}
+        {%- set sector_line=[company_name+" సంస్థ "+sector+" రంగంలో పనిచేస్తుంది. ","ఈ సంస్థ ముఖ్య కార్యకలాపాలు "+sector+" రంగంలో కలవు. "] | random -%}
+    {%- endif -%}
+    
+    {%- if status == 'చురుకుగా' -%}
+        {%- set status_line = company_name + " సంస్థ ప్రస్తుతం చురుకుగా కార్యకలాపాలు సాగిస్తుంది. " -%}
+    {% else -%}
+        {%- if status == 'రద్దు చేయబడింది' or status == 'కొట్టివేయు' or status == 'స్ట్రైకింగ్ ఆఫ్ ప్రాసెస్ కింద' -%}
+            {%- set status_line = company_name + " సంస్థ ప్రస్తుతం రద్దు చేయబడింది. " -%}
+        {% else -%}
+            {%- if status == 'సమ్మిళితమైంది' -%}
+                {%- set status_line = company_name + " సంస్థ ప్రస్తుతం మరొక సంస్థతో సమ్మిళితమైంది. " -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endif -%}
+
+    {%- if category!="-" -%}
+        {%- set category_line="ఇది కంపెనీ షేర్ల ద్వారా పరిమితం చేయబడిన సంస్థ. " -%}
+    {%- endif -%}
+
+    {%- if authorised_capital != '-' and paidup_capital != '-' -%}
+        {%- set capitals_line = "ఈ సంస్థ అధీకృత వాటా మూలధనం (ఆర్థరైజ్డ్ కాపిటల్) రూ." + authorised_capital + ", చెల్లించిన మూలధనం (పైడ్అప్ కాపిటల్) రూ." + paidup_capital+ref4+". " -%}
+    {%- endif -%}
+
+    {{intro_line}}{{type_line}}{{roc_line}}{{headq_line}}{{industry_line}}{{sector_line}}{{status_line}}{{category_line}}{{capitals_line}}
+    {{"\n"}}
+{%- endmacro -%}
+
+
+{%- macro history(wiki_history) -%}
+{%- if wiki_history!="-"%}
+{{ '==చరిత్ర=='+'\n' }}
+{{wiki_history}}{{ref2}}
+{%- if key_people!="-" -%}
+    {%- set key_people_line=[" ఈ సంస్థకు చెందిన ముఖ్య వ్యక్తులు "+key_people+".",key_people+" వంటివారు ఈ సంస్థకు చెందిన ప్రధాన వ్యక్తులు. "] | random -%}
+    {{key_people_line}}
+{%- endif -%}
+{{"\n"}}
+{% endif -%}
+{%- endmacro -%}
+
+
+{%- macro operations(wiki_operations) -%}
+{%- if wiki_operations!="-"%}
+{{ '==కార్యకలపాలు =='+'\n' }}
+{{wiki_operations}}
+{{"\n"}}
+{% endif -%}
+{%- endmacro -%}
+
+
+{%- macro products(wiki_products) -%}
+{%- if wiki_products!="-"%}
+{{ '==ఉత్పత్తులు=='+'\n' }}
+{{wiki_products}}
+{{"\n"}}
+{%- elif product!="-" -%}
+    {{ '==ఉత్పత్తులు=='+'\n' }}
+    {%- set products_line=" ఈ సంస్థ "+product+" వంటి ఉత్పత్తులను అందిస్తుంది. " -%}
+    {{products_line}}
+    {{"\n"}}
+{% endif -%}
+{%- endmacro -%}
+
+
+{%- macro services(wiki_services,service) -%}
+{%- if wiki_services!="-"%}
+    {{ '==సేవలు=='+'\n' }}
+    {{wiki_services}}
+    {{"\n"}}
+{%- elif service!="-" -%}
+    {{ '==సేవలు=='+'\n' }}
+    {%- set services_line=" ఈ సంస్థ "+service+" వంటి సేవలను అందిస్తుంది. " -%}
+    {{services_line}}
+    {{"\n"}}
+{% endif -%}
+{%- endmacro -%}
+
+
+{%- macro awards(wiki_awards) -%}
+{%- if wiki_awards!="-"%}
+{{ '==అవార్డులు=='+'\n' }}
+{{wiki_awards}}
+{{"\n"}}
+{% endif -%}
+{%- endmacro -%}
+
+
+{%- macro others(CIN,regno) -%}
+    {%- if CIN!="-" and regno!="-"-%}
+    {{ '==ఇతర వివరాలు=='+'\n' }}
+    {%- set cin_line=[" "+company_name+" కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) "+CIN+ref3+", దీని నమోదు సంఖ్య "+regno+". "," భారత కార్పొరేట్ వ్యవహారాల మంత్రిత్వ శాఖ (MCA), "+company_name+" సంస్థకి కార్పొరేట్ గుర్తింపు సంఖ్య (CIN) "+CIN+ref3+", దాని నమోదు సంఖ్య "+regno+" ని కేటాయించింది. "] | random -%}
+    {{cin_line}}
+    {{"\n"}}
+    {%- endif -%}
+{%- endmacro -%}
+
+
+{%- macro references() -%}
+{{ '==మూలాలు=='+'\n'}}<references />{{"\n"}}
+{%- endmacro -%}
+
+{#{%- macro category() -%}
+
+	[[వర్గం: తెవికీ భారతీయ సంస్థలు ]]
+    
+{%- endmacro -%}#}
+
+{{- infobox() }}
+{{- intro(CIN,company_name,founded,type,headquarters,RoC,industry,sector,authorised_capital,paidup_capital,key_people,status,class_of_company,regno) }}
+{{- history(wiki_history) }}
+{{- operations(wiki_operations)}}
+{{- products(wiki_products)}}
+{{- services(wiki_services,service)}}
+{{- awards(wiki_awards)}}
+{{- others(CIN,regno)}}
+{{- references()}}
+{#{{"\n"}}
+{{- category() }}#}
