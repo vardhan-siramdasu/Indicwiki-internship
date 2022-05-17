@@ -34,6 +34,6 @@ companies present in wikipedia.
 We collected more than 57000+ companies data. 
 
 ## Scraping
-scraping is done using selenium.
+scraping is done using selenium and BeautifulSoup.
 
 ## Translation
