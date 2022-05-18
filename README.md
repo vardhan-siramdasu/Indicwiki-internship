@@ -27,22 +27,37 @@ The BSE SENSEX (also known as the S&P Bombay Stock Exchange Sensitive Index or s
 <div id='psu'></div>
 
 ### Public Sector Undertakings (PSU)
-A government entity which is also known as government-owned enterprise or government-owned corporation or statutory corporation or government-owned-company or nationalised company in India established by the government with the objective of development, aim to control monopoly by the private sector entities, offer products and services at an affordable price to the citizens along with the role to earn profit for the government is called a Public Sector Undertaking (PSU) or a Public Sector Enterprise (PSE). These establishments are wholly or partly owned by the Government of India and/or one of the many state or territorial governments. Central Public Sector Undertakings (CPSU, CPSE) are wholly or partly owned by the Government of India, while State Public Sector Undertakings (SPSU, SPSE) are wholly or partly owned by state or territorial governments.
+A government entity which is also known as government-owned enterprise or government-owned corporation or statutory corporation or government-owned-company or nationalised company in India established by the government with the objective of development, aim to control monopoly by the private sector entities, offer products and services at an affordable price to the citizens along with the role to earn profit for the government is called a Public Sector Undertaking (PSU) or a Public Sector Enterprise (PSE).
 
 <div id='wiki'></div>
 
 ### Companies in Wikipedia
-companies present in wikipedia.
+There are several Indian companies present in wikipedia and most of them are common in BSE & NSE, PSU companies. wiki companies are those which are not present in above 2 categories.
 
 <div id='60k'></div>
 
 ### Other Indian Companies
-We collected more than 57000+ companies data. 
+We scraped several websites and collected 50000+ companies data based on their capital. 
 
-## Scraping
-scraping is done using selenium and BeautifulSoup.
+## Data collection & Scraping
+Most of the scraping part is done using `selenium` and `BeautifulSoup`.</br>
+For the installation use the following commands in your command prompt or anaconda prompt.
 
-## Translation
+``` 
+pip install beautifulsoup4
+pip install selenium 
+```
+
+## Translation and Transliteration
+Translation and Transliteration was an important part of the project. We need to test several packages like `deep-translator`, `anuvaad` and `deeptranslit`. The translator may be works well for some kind of data, so that we need to use the best fit for our data.
+For installation of above packages run the following commands in your command prompt or anaconda prompt.
+
+```
+pip install deep-translator
+pip install anuvaad
+pip install deeptranslit
+```
+
 
 ## Jinja Templating
 We use Jinja templating tool for the creating articles in Telugu. We use randomized the sentence formation to maku sure that each article has different kind of sentenses.</br>
