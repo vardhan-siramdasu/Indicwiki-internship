@@ -7,7 +7,13 @@ Creating intelligent programs for generating Telugu and Hindi content using Arti
 ![](https://img.shields.io/badge/deep--translator-v1.8.3%20en%20--%3E%20te-blue)
 ![](https://img.shields.io/badge/Jinja-templating-red)
 
+#### Requirements : 
+We need specific package versions for the setup of our virtual environment for the project.</br>
+Link for the requirements : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/requirements.txt)
+
 ## Domain : INDIAN COMPANIES
+There more than 2 Million+ companies exist in India. Our aim is to generate articles for 50000+ companies in Telugu so that we divided the companies into 4 categories based on their nature and organization. 
+
 * [*BSE & NSE Companies*](#bsense)
 * [*Public Sector Undertakings (PSU)*](#psu)
 * [*Companies in Wikipedia*](#wiki)
@@ -37,3 +43,11 @@ We collected more than 57000+ companies data.
 scraping is done using selenium and BeautifulSoup.
 
 ## Translation
+
+## Template
+
+## Article(XML) Generation
+* BSE & NSE companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/indian%20companies%20bse%20nse/xml%20files/final_wiki_company.xml)
+* PSU companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XML%20files/PSU_all.xml)
+* companies present in wikipedia xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/Wiki%20companies/XML%20files/company_full.xml)
+* Other Indian companies xml file : [here]()
