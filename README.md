@@ -44,9 +44,19 @@ scraping is done using selenium and BeautifulSoup.
 
 ## Translation
 
-## Template
+## Jinja Templating
+We use Jinja templating tool for the creating articles in Telugu. We use randomized the sentence formation to maku sure that each article has different kind of sentenses.</br>
+Jinja templates for all four categories of companies :
+* BSE & NSE companies : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/indian%20companies%20bse%20nse/templates/company.j2)
+* PSU companies : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/templates/PSU_companies.j2)
+* wiki companies : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/Wiki%20companies/Templates/introduction.j2)
+* other companies : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/templates/remaining%20Indian%20companies.j2)
+
+
 
 ## Article(XML) Generation
+We generated 4 different XML files for each of the category.</br>
+> The code for the generating the XML file is provided here : [XML generator](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XMLgen.ipynb)
 * BSE & NSE companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/indian%20companies%20bse%20nse/xml%20files/final_wiki_company.xml)
 * PSU companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XML%20files/PSU_all.xml)
 * companies present in wikipedia xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/Wiki%20companies/XML%20files/company_full.xml)
