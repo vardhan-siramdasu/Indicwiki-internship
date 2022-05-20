@@ -73,6 +73,6 @@ Jinja templates for all four categories of companies :
 We generated 4 different XML files for each of the category.</br>
 > The code for the generating the XML file is provided here : [XML generator](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XMLgen.ipynb)
 * BSE & NSE companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/indian%20companies%20bse%20nse/xml%20files/final_wiki_company.xml)
-* PSU companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XML%20files/PSU_all.xml)
+* PSU companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XML%20files/ALL_PSU.xml)
 * companies present in wikipedia xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/Wiki%20companies/XML%20files/company_full.xml)
 * Other Indian companies xml file : [here]()
