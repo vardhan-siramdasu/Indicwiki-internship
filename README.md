@@ -75,4 +75,4 @@ We generated 4 different XML files for each of the category.</br>
 * BSE & NSE companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/indian%20companies%20bse%20nse/xml%20files/final_wiki_company.xml)
 * PSU companies xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/XML%20files/ALL_PSU.xml)
 * companies present in wikipedia xml file : [here](https://github.com/vardhan-siramdasu/Indicwiki-internship/blob/main/Wiki%20companies/XML%20files/company_full.xml)
-* Other Indian companies xml file : [here]()
+* Other Indian companies xml file : [here](https://drive.google.com/file/d/1mT8U9u6kN6vNz6fUQBj3a--hTJf0QI33/view?usp=sharing)
