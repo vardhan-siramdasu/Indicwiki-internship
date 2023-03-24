@@ -37,7 +37,7 @@ There are several Indian companies present in wikipedia and most of them are com
 <div id='60k'></div>
 
 ### Other Indian Companies
-We scraped several websites and collected 50000+ companies data based on their capital. 
+We scraped several websites and collected 60000+ companies data based on their capital. 
 
 ## Data collection & Scraping
 Most of the scraping part is done using `selenium` and `BeautifulSoup`.</br>
